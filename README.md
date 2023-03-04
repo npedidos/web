@@ -1,27 +1,84 @@
-# Web
+# NPedidos - WEB
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
+[![DeepSource](https://deepsource.io/gh/npedidos/web.svg/?label=active+issues&show_trend=true&token=Dfu5Zcgrcwn5tDz83zE1QmFe)](https://deepsource.io/gh/npedidos/web/?ref=repository-badge)
+[![Repo size](https://img.shields.io/github/repo-size/npedidos/web?style=flat-square)](https://github.com/npedidos/web)
 
-## Development server
+[![Twitch nmarulo](https://img.shields.io/twitch/status/nmarulo?color=%23A970FF&label=twitch%20nmarulo&style=flat-square)](https://www.twitch.tv/nmarulo)
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Descripción
 
-## Code scaffolding
+NPedidos es una aplicación que permite la gestión simple de pedidos de menús de comidas, por fechas.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este proyecto consume los recursos proporcionados por el [proyecto rest-api](https://github.com/npedidos/rest-api).
 
-## Build
+## Demostración
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+No disponible, por el momento.
 
-## Running unit tests
+## Despliegue local
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [Requisitos](#requisitos)
+- [Empezar a trabajar](#empezar-a-trabajar)
+  - [Trabajando en IntelliJ IDEA](#working-webstorm)
 
-## Running end-to-end tests
+### Requisitos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Empezar a trabajar
 
-## Further help
+<a name="working-webstorm"></a>
+**Trabajando en WebStorm**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Clonar proyecto](#clonar-proyecto)
+- [Ejecutar](#run)
+- [Habilitar EditorConfig](#editor-config)
+- [Establecer opciones de guardado](#on-save)
+
+<a name="clonar-proyecto"></a>
+Clonar proyecto:
+
+> File > New > Project from Version Control
+
+<a name="run"></a>
+Ejecutar aplicación:
+
+- `Run > Run...`
+  - `App`
+
+<a name="editor-config"></a>
+Habilitar EditorConfig
+
+- Es necesario tener habilitado el soporte de EditorConfig:
+
+  > Settings > Editor > Code Style
+  > - Enable Editor Config Support
+
+<a name="on-save"></a>
+Establecer acciones de guardado
+
+- Recomiendo tener activado las acciones de guardado:
+  - Reformat code
+  - Optimize imports
+
+> Settings > Tools > Actions on save
+
+> Tener habilitado EditorConfig.
+
+## Contribuir
+
+Cualquier contribución que hagas será muy apreciada.
+
+- Antes de empezar a codificar, lea las [directrices de contribución](CONTRIBUTING.md).
+
+## Agradecimientos
+
+Gracias a [JetBrains](https://www.jetbrains.com/?from=SoftN%20CMS) por proporcionar una licencia para IntelliJ para
+desarrollar este proyecto.
+
+| JetBrains                                                                               | IntelliJ                                                                             |
+|-----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| ![jetbrains](https://github.com/npedidos/web/blob/master/img/jetbrains.svg "jetbrains") | ![webstorm](https://github.com/npedidos/web/blob/master/img/webstorm.svg "webstorm") |
+
+## Licencia
+
+[MIT license](LICENSE).
