@@ -75,7 +75,7 @@ Cualquier contribución que hagas será muy apreciada.
 Gracias a [JetBrains](https://www.jetbrains.com/?from=SoftN%20CMS) por proporcionar una licencia para IntelliJ para
 desarrollar este proyecto.
 
-| JetBrains                                                                               | IntelliJ                                                                             |
+| JetBrains                                                                               | WebStorm                                                                             |
 |-----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | ![jetbrains](https://github.com/npedidos/web/blob/master/img/jetbrains.svg "jetbrains") | ![webstorm](https://github.com/npedidos/web/blob/master/img/webstorm.svg "webstorm") |
 
