@@ -6,6 +6,8 @@ import {LoginComponent} from './login/login.component';
 import {OrderComponent} from './order/order.component';
 import {AppRoutingModule} from './app-routing.module';
 import {UserOrdersComponent} from './user-orders/user-orders.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import {UserOrdersComponent} from './user-orders/user-orders.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
