@@ -11,45 +11,38 @@
   <section class="content">
     <div class="card card-row card-info card-outline">
       <div class="card-body">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th style="width: 10px">#</th>
-            <th>Fecha</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1.</td>
-            <td>2022-10-31T18:23:55</td>
-            <td class="text-center">
-              <i class="fas fa-search-plus"></i>
-            </td>
-          </tr>
-          <tr>
-            <td>2.</td>
-            <td>2022-10-31T18:23:55</td>
-            <td class="text-center">
-              <i class="fas fa-search-plus"></i>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="card-footer clearfix">
-        <ul class="pagination pagination-sm m-0 float-right">
-          <li class="page-item"><a class="page-link" href="#">
-            <i class="fas fa-angle-double-left"></i>
-          </a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">
-            <i class="fas fa-angle-double-right"></i>
-          </a></li>
-        </ul>
+        <p-table [value]="response.content"
+                 [paginator]="true"
+                 [lazy]="true"
+                 [totalRecords]="response.total"
+                 [rowHover]="true"
+                 [rowsPerPageOptions]="[10,25,50]"
+                 responsiveLayout="scroll"
+                 (onPage)="onPage($event)">
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 80px">#</th>
+              <th>Fecha</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-content>
+            <tr>
+              <td>{{content.id}}</td>
+              <td>{{content.dateOrder}}</td>
+              <td class="text-center">
+                <i class="fas fa-search-plus"></i>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td [attr.colspan]="3">
+                Sin registros
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
       </div>
     </div>
   </section>

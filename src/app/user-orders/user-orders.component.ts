@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {UsersService} from '../services/users.service';
+import {UserOrdersResponse} from '../rest/response/user-orders-response';
+import {PagingAndSortingRequest} from '../rest/request/paging-and-sorting-request';
 
 @Component({
   selector: 'app-user-orders',
@@ -7,9 +11,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserOrdersComponent implements OnInit {
 
-  constructor() { }
+  response!: UserOrdersResponse;
+
+  private pageAndSortingRequest: PagingAndSortingRequest | null = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private usersService: UsersService
+  ) {
+  }
 
   ngOnInit(): void {
+    const currentUserId = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.usersService.findAllOrders(currentUserId, this.pageAndSortingRequest)
+        .subscribe(response => {
+          this.response = response;
+        });
+  }
+
+  onPage(event: any) {
+    const currentUserId = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (this.response.content.length > 0) {
+      const page = event.first / event.rows;
+      this.pageAndSortingRequest = {
+        paging: {
+          page: page,
+          size: event.rows
+        },
+        sorting: []
+      };
+    }
+
+    this.usersService.findAllOrders(currentUserId, this.pageAndSortingRequest)
+        .subscribe(response => {
+          this.response = response;
+        });
   }
 
 }
