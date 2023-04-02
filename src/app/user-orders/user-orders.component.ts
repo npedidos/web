@@ -11,7 +11,7 @@ import {PagingAndSortingRequest} from '../rest/request/paging-and-sorting-reques
 })
 export class UserOrdersComponent implements OnInit {
 
-  response!: UserOrdersResponse;
+  response: UserOrdersResponse;
 
   private pageAndSortingRequest: PagingAndSortingRequest | null = null;
 
@@ -19,6 +19,13 @@ export class UserOrdersComponent implements OnInit {
     private route: ActivatedRoute,
     private usersService: UsersService
   ) {
+    this.response = {
+      content: [],
+      pageSize: 0,
+      total: 0,
+      currentPage: 0,
+      totalPages: 0
+    };
   }
 
   ngOnInit(): void {
