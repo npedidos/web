@@ -6,7 +6,7 @@ import {UserOrdersComponent} from './user-orders/user-orders.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'order',
     component: OrderComponent
   },
   {
@@ -16,6 +16,11 @@ const routes: Routes = [
   {
     path: 'users/:id',
     component: UserOrdersComponent
+  },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   }
 ];
 
