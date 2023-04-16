@@ -6,7 +6,7 @@ import {UserOrdersComponent} from './user-orders/user-orders.component';
 
 const routes: Routes = [
   {
-    path: 'order',
+    path: 'order/:menuId',
     component: OrderComponent
   },
   {

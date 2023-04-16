@@ -14,8 +14,10 @@
         <i class="fas fa-chevron-left"></i>
       </button>
       <div class="info-box-content text-center pt-2 pb-2">
-        <h2>Semana 50</h2>
-        <h4>12 al 16 de diciembre</h4>
+        <h2>Semana {{response.menuWeek.weekOfYear}}</h2>
+        <h4>{{response.menuWeek.fistDayOfWeek}}
+          - {{response.menuWeek.lastDayOfWeek}}
+          {{response.menu.currentDate | date:'MMMM'}}</h4>
       </div>
       <button type="button" class="btn btn-info text-white info-box-icon border-left">
         <i class="fas fa-chevron-right"></i>
@@ -30,7 +32,7 @@
             <i class="fas fa-chevron-left"></i>
           </a>
           <div class="flex-grow-1 pt-3 pb-3">
-            <h4 class="mb-0">Lunes, 12 de diciembre</h4>
+            <h4 class="mb-0">{{response.menu.currentDate | date:'EEEE, d MMMM'}}</h4>
           </div>
           <a class="btn btn-link text-info border-left pt-3 w-2">
             <i class="fas fa-chevron-right"></i>
@@ -38,33 +40,17 @@
         </div>
       </div>
       <div class="card-body">
-        <div class="card card-secondary card-outline">
+        <div class="card card-secondary card-outline" *ngFor="let typeDish of response.typeDishes">
           <div class="card-header">
-            <h5 class="card-title">Tipo plato 1</h5>
+            <h5 class="card-title">{{typeDish.name}}</h5>
           </div>
           <div class="card-body">
-            <div class="custom-control custom-radio">
-              <input class="custom-control-input" type="radio" id="customRadio1" name="radio1">
-              <label for="customRadio1" class="custom-control-label">Plato 1</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input class="custom-control-input" type="radio" id="customRadio2" name="radio1">
-              <label for="customRadio2" class="custom-control-label">Plato 2</label>
-            </div>
-          </div>
-        </div>
-        <div class="card card-secondary card-outline">
-          <div class="card-header">
-            <h5 class="card-title">Tipo plato 2</h5>
-          </div>
-          <div class="card-body">
-            <div class="custom-control custom-radio">
-              <input class="custom-control-input" type="radio" id="customRadio3" name="radio2">
-              <label for="customRadio3" class="custom-control-label">Plato 1</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input class="custom-control-input" type="radio" id="customRadio4" name="radio2">
-              <label for="customRadio4" class="custom-control-label">Plato 2</label>
+            <div class="custom-control custom-radio" *ngFor="let foodDish of typeDish.foodDishes; index as i">
+              <input class="custom-control-input" type="radio"
+                     id="input-food-dishes-{{foodDish.id}}"
+                     name="food-dishes-radio-{{typeDish.id}}"
+                     [value]="foodDish.id">
+              <label for="input-food-dishes-{{foodDish.id}}" class="custom-control-label">{{foodDish.name}}</label>
             </div>
           </div>
         </div>
