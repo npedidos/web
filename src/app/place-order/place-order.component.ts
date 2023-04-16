@@ -4,11 +4,11 @@ import {PlaceOrderService} from '../services/place-order.service';
 import PlaceOrderResponse from '../rest/response/pace-order-response';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  selector: 'app-place-order',
+  templateUrl: './place-order.component.html',
+  styleUrls: ['./place-order.component.css']
 })
-export class OrderComponent implements OnInit {
+export class PlaceOrderComponent implements OnInit {
 
   response: PlaceOrderResponse;
 

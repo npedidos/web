@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
-import {OrderComponent} from './order/order.component';
+import {PlaceOrderComponent} from './place-order/place-order.component';
 import {UserOrdersComponent} from './user-orders/user-orders.component';
 
 const routes: Routes = [
   {
-    path: 'order/:menuId',
-    component: OrderComponent
+    path: 'place-order/:menuId',
+    component: PlaceOrderComponent
   },
   {
     path: 'login',
