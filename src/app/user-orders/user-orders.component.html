@@ -29,7 +29,7 @@
           <ng-template pTemplate="body" let-content>
             <tr>
               <td>{{content.id}}</td>
-              <td>{{content.dateOrder}}</td>
+              <td>{{content.dateOrder | date:'yyyy-MM-dd hh:mm:ss'}}</td>
               <td class="text-center">
                 <i class="fas fa-search-plus"></i>
               </td>
