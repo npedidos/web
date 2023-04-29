@@ -1,1 +1,19 @@
+<p-confirmDialog #cd header="Confirmación" icon="pi pi-exclamation-triangle">
+  <ng-template pTemplate="footer">
+    <div class="row">
+      <div class="col-6">
+        <button type="button" pButton class="btn btn-danger btn-block fix-btn-danger"
+                (click)="cd.reject()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="col-6">
+        <button type="button" pButton class="btn btn-success btn-block fix-btn-success" (click)="cd.accept()">
+          <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog>
+
 <router-outlet></router-outlet>
