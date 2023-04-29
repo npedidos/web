@@ -6,7 +6,7 @@ import {LoginComponent} from './login/login.component';
 import {PlaceOrderComponent} from './place-order/place-order.component';
 import {AppRoutingModule} from './app-routing.module';
 import {UserOrdersComponent} from './user-orders/user-orders.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TableModule} from 'primeng/table';
@@ -27,6 +27,7 @@ import {ConfirmationService} from 'primeng/api';
     FormsModule,
     HttpClientModule,
     TableModule,
+    ReactiveFormsModule,
     ConfirmDialogModule
   ],
   providers: [ConfirmationService],

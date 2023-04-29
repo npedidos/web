@@ -40,34 +40,37 @@
         </div>
       </div>
       <div class="card-body">
-        <div class="card card-secondary card-outline" *ngFor="let typeDish of response.typeDishes">
-          <div class="card-header">
-            <h5 class="card-title">{{typeDish.name}}</h5>
-          </div>
-          <div class="card-body">
-            <div class="custom-control custom-radio" *ngFor="let foodDish of typeDish.foodDishes; index as i">
-              <input class="custom-control-input" type="radio"
-                     id="input-food-dishes-{{foodDish.id}}"
-                     name="food-dishes-radio-{{typeDish.id}}"
-                     [value]="foodDish.id">
-              <label for="input-food-dishes-{{foodDish.id}}" class="custom-control-label">{{foodDish.name}}</label>
+        <form [formGroup]="placeOrderForm">
+          <div class="card card-secondary card-outline" *ngFor="let typeDish of response.typeDishes">
+            <div class="card-header">
+              <h5 class="card-title">{{typeDish.name}}</h5>
+            </div>
+            <div class="card-body">
+              <div class="custom-control custom-radio" *ngFor="let foodDish of typeDish.foodDishes">
+                <input class="custom-control-input" type="radio"
+                       id="input-food-dishes-{{foodDish.id}}"
+                       name="food-dishes-radio-{{typeDish.id}}"
+                       formControlName="food-dishes-radio-{{typeDish.id}}"
+                       [value]="foodDish.id">
+                <label for="input-food-dishes-{{foodDish.id}}" class="custom-control-label">{{foodDish.name}}</label>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>
 </div>
 <footer class="main-footer">
   <div class="row">
-    <div class="col-6">
-      <button type="button" class="btn btn-danger btn-block">
+    <div class="col-2">
+      <button type="button" class="btn btn-default btn-block">
         <i class="fas fa-times"></i>
       </button>
     </div>
-    <div class="col-6">
-      <button type="button" class="btn btn-success btn-block">
-        <i class="fas fa-check"></i>
+    <div class="col-10">
+      <button type="button" class="btn btn-primary btn-block" (click)="saveConfirm()">
+        Confirmar pedido
       </button>
     </div>
   </div>
