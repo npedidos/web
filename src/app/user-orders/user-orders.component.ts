@@ -26,6 +26,18 @@ export class UserOrdersComponent implements OnInit {
       currentPage: 0,
       totalPages: 0
     };
+    this.pageAndSortingRequest = {
+      paging: {
+        page: 0,
+        size: 10
+      },
+      sorting: [
+        {
+          property: 'id',
+          direction: 'DESC'
+        }
+      ]
+    };
   }
 
   ngOnInit(): void {
