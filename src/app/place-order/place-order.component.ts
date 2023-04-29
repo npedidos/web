@@ -76,7 +76,15 @@ export class PlaceOrderComponent implements OnInit {
       foodDishesId: Object.values(this.placeOrderForm.value)
     })
         .subscribe(response => {
-          this.router.navigate([`/users/${this.loginService.getUser().id}`]);
+          this.goToOrders();
         });
+  }
+
+  cancel() {
+    this.goToOrders();
+  }
+
+  goToOrders() {
+    this.router.navigate(['/users', this.loginService.getUser().id]);
   }
 }
