@@ -18,4 +18,10 @@ export class PlaceOrderService {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.loginService.getToken()})
     });
   }
+
+  getByCurrentDate(): Observable<PlaceOrderResponse> {
+    return this.http.get<PlaceOrderResponse>(`${environment.REST_API_URL}/place-order`, {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.loginService.getToken()})
+    });
+  }
 }
