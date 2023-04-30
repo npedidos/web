@@ -49,8 +49,7 @@ export class PlaceOrderComponent implements OnInit {
     if (this.activatedRoute.snapshot.paramMap.has('menuId')) {
       const menuId = Number(this.activatedRoute.snapshot.paramMap.get('menuId'));
 
-      this.placeOrderService.placeOrder(menuId)
-          .subscribe(this.getNext());
+      this.getPlaceOrderByMenuId(menuId);
     } else {
       this.placeOrderService.getByCurrentDate()
           .subscribe(this.getNext());
@@ -64,6 +63,11 @@ export class PlaceOrderComponent implements OnInit {
         this.save();
       }
     });
+  }
+
+  private getPlaceOrderByMenuId(menuId: number) {
+    this.placeOrderService.placeOrder(menuId)
+        .subscribe(this.getNext());
   }
 
   private getNext() {
@@ -97,4 +101,32 @@ export class PlaceOrderComponent implements OnInit {
   goToOrders() {
     this.router.navigate(['/users', this.loginService.getUser().id]);
   }
+
+  isNullOrUndefined(value: number) {
+    return value === null || value === undefined;
+  }
+
+  previousWeekMenu() {
+    this.goToPlaceOrder(this.response.menuWeek.previousWeekMenuId);
+  }
+
+  nextWeekMenu() {
+    this.goToPlaceOrder(this.response.menuWeek.nextWeekMenuId);
+  }
+
+  previousMenu() {
+    this.goToPlaceOrder(this.response.menu.previousMenuId);
+  }
+
+  nextMenu() {
+    this.goToPlaceOrder(this.response.menu.nextMenuId);
+  }
+
+  private goToPlaceOrder(menuId: number) {
+    this.router.navigate(['/place-order', menuId])
+        .then(value => {
+          this.getPlaceOrderByMenuId(menuId);
+        });
+  }
+
 }
