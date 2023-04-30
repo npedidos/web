@@ -46,19 +46,15 @@ export class PlaceOrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const menuId = Number(this.activatedRoute.snapshot.paramMap.get('menuId'));
+    if (this.activatedRoute.snapshot.paramMap.has('menuId')) {
+      const menuId = Number(this.activatedRoute.snapshot.paramMap.get('menuId'));
 
-    this.placeOrderService.placeOrder(menuId)
-        .subscribe(response => {
-          this.response = response;
-          const controlsConfig: any = {};
-
-          this.response.typeDishes.forEach(value => {
-            controlsConfig[`food-dishes-radio-${value.id}`] = [null];
-          });
-
-          this.placeOrderForm = this.formBuilder.group(controlsConfig);
-        });
+      this.placeOrderService.placeOrder(menuId)
+          .subscribe(this.getNext());
+    } else {
+      this.placeOrderService.getByCurrentDate()
+          .subscribe(this.getNext());
+    }
   }
 
   saveConfirm() {
@@ -68,6 +64,19 @@ export class PlaceOrderComponent implements OnInit {
         this.save();
       }
     });
+  }
+
+  private getNext() {
+    return (response: PlaceOrderResponse) => {
+      this.response = response;
+      const controlsConfig: any = {};
+
+      this.response.typeDishes.forEach(value => {
+        controlsConfig[`food-dishes-radio-${value.id}`] = [null];
+      });
+
+      this.placeOrderForm = this.formBuilder.group(controlsConfig);
+    };
   }
 
   private save() {

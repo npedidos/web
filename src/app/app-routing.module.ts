@@ -10,6 +10,10 @@ const routes: Routes = [
     component: PlaceOrderComponent
   },
   {
+    path: 'place-order',
+    component: PlaceOrderComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
