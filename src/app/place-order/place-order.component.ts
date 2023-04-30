@@ -28,6 +28,7 @@ export class PlaceOrderComponent implements OnInit {
   ) {
     this.response = {
       menu: {
+        id: 0,
         nextMenuId: 0,
         currentDate: new Date(),
         previousMenuId: 0

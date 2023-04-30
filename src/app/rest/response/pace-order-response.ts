@@ -5,6 +5,7 @@ export default interface PlaceOrderResponse {
 }
 
 export interface Menu {
+  id: number;
   currentDate: Date;
   nextMenuId: number;
   previousMenuId: number;
