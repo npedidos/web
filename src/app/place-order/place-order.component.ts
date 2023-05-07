@@ -5,7 +5,9 @@ import PlaceOrderResponse from '../rest/response/pace-order-response';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {OrderService} from '../services/order.service';
 import {LoginService} from '../services/auth/login.service';
-import {ConfirmationService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {HttpErrorResponse} from '@angular/common/http';
+import ErrorResponse from '../rest/response/error-response';
 
 @Component({
   selector: 'app-place-order',
@@ -24,7 +26,8 @@ export class PlaceOrderComponent implements OnInit {
     private orderService: OrderService,
     private loginService: LoginService,
     private confirmationService: ConfirmationService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.response = {
       menu: {
@@ -71,15 +74,27 @@ export class PlaceOrderComponent implements OnInit {
   }
 
   private getNext() {
-    return (response: PlaceOrderResponse) => {
-      this.response = response;
-      const controlsConfig: any = {};
+    return {
+      next: (response: PlaceOrderResponse) => {
+        this.response = response;
+        const controlsConfig: any = {};
 
-      this.response.typeDishes.forEach(value => {
-        controlsConfig[`food-dishes-radio-${value.id}`] = [null];
-      });
+        this.response.typeDishes.forEach(value => {
+          controlsConfig[`food-dishes-radio-${value.id}`] = [null];
+        });
 
-      this.placeOrderForm = this.formBuilder.group(controlsConfig);
+        this.placeOrderForm = this.formBuilder.group(controlsConfig);
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+        const errorResponse: ErrorResponse = httpErrorResponse.error;
+
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: errorResponse.error.description,
+          life: 5000
+        });
+      }
     };
   }
 
@@ -90,6 +105,12 @@ export class PlaceOrderComponent implements OnInit {
       foodDishesId: Object.values(this.placeOrderForm.value)
     })
         .subscribe(response => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Acción realizada',
+            detail: 'La acción ha sido realizada correctamente',
+            life: 5000
+          });
           this.goToOrders();
         });
   }
